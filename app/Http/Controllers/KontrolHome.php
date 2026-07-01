@@ -39,3 +39,4 @@ class KontrolHome extends Controller
     }
 
 
+}
