@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'AKEKA | Penyedia Alat Kebersihan Kantor ')</title>
 
-    <link rel="stylesheet" href="{{ asset('bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('asset/css/gaya.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('bootstrap-5.3.8-dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ secure_asset('asset/css/gaya.css') }}">
 </head>
 <body>
 
@@ -70,7 +70,7 @@
     </div>
 </footer>
 
-<script src="{{ asset('bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ secure_asset('bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js') }}"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
