@@ -122,9 +122,8 @@ class KontrolProduk extends Controller
     {
         $produk = Produk::all();
 
-        $pdf = Pdf::loadView('admin.pdf_produk', compact('produk'))
-            ->setPaper('A4', 'landscape');
+        $pdf = Pdf::loadView('admin.pdf_produk', compact('produk'));
 
-        return $pdf->download('Laporan_Produk_AKEKA.pdf');
+        return $pdf->stream('Laporan_Produk_AKEKA.pdf');
     }
 }
