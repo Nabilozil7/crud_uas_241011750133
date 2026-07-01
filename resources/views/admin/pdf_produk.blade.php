@@ -94,17 +94,33 @@ td{
 <!-- HEADER -->
 
 <div class="kop">
+    <table width="100%">
+        <tr>
+            <td width="80">
+                @php
+                    $path = public_path('asset/gambar/logo/akk.png');
+                    $base64 = null;
 
-<img src="{{ public_path('asset/gambar/logo/akk.png') }}"
-class="logo">
+                    if (file_exists($path)) {
+                        $type = pathinfo($path, PATHINFO_EXTENSION);
+                        $data = file_get_contents($path);
+                        $base64 = 'data:image/'.$type.';base64,'.base64_encode($data);
+                    }
+                @endphp
 
-        <div class="judul">
-            <div class="judul">LAPORAN DATA PRODUK</div>
-            <div class="judul">AKEKA</div>
-             <div class="judul h2">
-                 Sistem Pengadaan Alat Kebersihan Kantor
-            </div>
-        </div>
+                @if($base64)
+                    <img src="{{ $base64 }}" width="70">
+                @endif
+            </td>
+
+            <td style="text-align:center;">
+                <h2 style="margin:0; color:#198754;">AKEKA</h2>
+                <p style="margin:3px 0;">LAPORAN DATA PRODUK</p>
+                <small>Sistem Pengadaan Alat Kebersihan Kantor</small>
+            </td>
+        </tr>
+    </table>
+</div>
 
 <div class="clear"></div>
 
