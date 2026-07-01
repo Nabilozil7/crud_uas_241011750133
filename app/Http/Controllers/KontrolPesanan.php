@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pesanan;
+use App\Models\pesanan;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -29,7 +29,7 @@ class KontrolPesanan extends Controller
         'keterangan' => 'nullable',
         ]);
 
-        Pesanan::create([
+        pesanan::create([
             'nama_pemesan' => $request->nama_pemesan,
             'email' => $request->email,
             'no_hp' => $request->no_hp,
@@ -47,14 +47,14 @@ class KontrolPesanan extends Controller
 
     public function index()
     {
-        $pesanan = Pesanan::with('produk')->latest()->get();
+        $pesanan = pesanan::with('produk')->latest()->get();
 
         return view('admin.pesanan.index', compact('pesanan'));
     }
 
     public function edit($id)
     {
-        $pesanan = Pesanan::findOrFail($id);
+        $pesanan = pesanan::findOrFail($id);
         $produk = Produk::all();
 
         return view('admin.pesanan.edit', compact('pesanan', 'produk'));
@@ -62,7 +62,7 @@ class KontrolPesanan extends Controller
 
     public function update(Request $request, $id)
 {
-    $pesanan = Pesanan::findOrFail($id);
+    $pesanan = pesanan::findOrFail($id);
 
     $produk = Produk::findOrFail($request->produk_id);
 
@@ -85,7 +85,7 @@ class KontrolPesanan extends Controller
 
     public function destroy($id)
     {
-        $pesanan = Pesanan::findOrFail($id);
+        $pesanan = pesanan::findOrFail($id);
 
         $pesanan->delete();
 
@@ -96,7 +96,7 @@ class KontrolPesanan extends Controller
 
     public function pdf()
 {
-    $pesanan = Pesanan::with('produk')->get();
+    $pesanan = pesanan::with('produk')->get();
 
     $pdf = Pdf::loadView('admin.pdf_pesanan', compact('pesanan'))
             ->setPaper('A4', 'landscape');

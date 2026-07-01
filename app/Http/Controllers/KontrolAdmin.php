@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Produk;
-use App\Models\Pesanan;
+use App\Models\pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -56,26 +56,26 @@ class KontrolAdmin extends Controller
 {
     $totalProduk = Produk::count();
 
-    $totalPesanan = Pesanan::count();
+    $totalPesanan = pesanan::count();
 
-    $totalPendapatan = Pesanan::where('status','Selesai')
+    $totalPendapatan = pesanan::where('status','Selesai')
         ->sum('total_harga');
 
-    $totalTerjual = Pesanan::where('status','Selesai')
+    $totalTerjual = pesanan ::where('status','Selesai')
         ->sum('jumlah');
 
-    $diproses = Pesanan::where('status','Diproses')->count();
+    $diproses = pesanan::where('status','Diproses')->count();
 
-    $dikirim = Pesanan::where('status','Dikirim')->count();
+    $dikirim = pesanan::where('status','Dikirim')->count();
 
-    $selesai = Pesanan::where('status','Selesai')->count();
+    $selesai = pesanan::where('status','Selesai')->count();
 
-    $dibatalkan = Pesanan::where('status','Dibatalkan')->count();
+    $dibatalkan = pesanan::where('status','Dibatalkan')->count();
 
-    $totalPendapatan = Pesanan::where('status', 'Selesai')
+    $totalPendapatan = pesanan::where('status', 'Selesai')
     ->sum('total_harga');
 
-    $pesananTerbaru = Pesanan::with('produk')
+    $pesananTerbaru = pesanan::with('produk')
         ->latest()
         ->take(5)
         ->get();
